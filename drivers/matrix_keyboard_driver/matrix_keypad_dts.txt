@@ -1,0 +1,39 @@
+* Matrix keypad driver.
+
+This 4x4 matrix keypad has 16 built-in pushbutton contacts connected 
+to row and column lines.  A microcontroller can scan these lines for 
+a button-pressed state.  In the keypad library, the Propeller sets all 
+the column lines to input, and all the row lines to input.  Then, 
+it picks a row and sets it high.  After that, it checks the column 
+lines one at a time.  If the column connection stays low, the button 
+on the row has not been pressed.  If it goes high, the microcontroller 
+knows which row (the one it set high), and which column, (the one that 
+was detected high when checked). See the schematic in the "Circuit" 
+section, above, for a visual reference of the keypad layout.
+
+Required properties:
+  - compatible: Should be "matrix-keypad"
+  - row-gpios: array of gpios used for work with matrix rows
+  - col-gpios: array of gpios used for work with matrix coumns
+  - wakeup-source: if device is marked as a wakeup source, then all the primary
+interrupt(s) can be used as wakeup interrupt(s).
+    Documentation/devicetree/bindings/gpio/gpio.txt.
+
+DTS-node example:
+/ {
+	matrix-keypad {
+		compatible = "matrix-keypad";
+		row-gpios = <&gpio0 26 GPIO_ACTIVE_LOW
+			&gpio0 27 GPIO_ACTIVE_LOW
+			&gpio1 12 GPIO_ACTIVE_LOW
+			&gpio1 13 GPIO_ACTIVE_LOW>;
+		col-gpios = <&gpio1 14 GPIO_ACTIVE_LOW
+			&gpio1 15 GPIO_ACTIVE_LOW
+			&gpio1 17 GPIO_ACTIVE_LOW
+			&gpio1 16 GPIO_ACTIVE_LOW>;
+		debounce-delay-ms = <5>;
+		col-scan-delay-us = <400>;
+		
+		wakeup-source;
+	};
+};

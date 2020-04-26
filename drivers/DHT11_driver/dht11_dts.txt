@@ -1,0 +1,24 @@
+* DHT11 humidity/temperature sensor
+
+DHT11 output calibrated digital signal. It utilizes exclusive 
+digital-signal-collecting-technique and humidity sensing technology, 
+assuring its reliability and stability. Its sensing elements is
+connected with 8-bit single-chip computer.Every sensor of this model 
+is temperature compensated and calibrated in accurate calibration
+chamber and the calibration-coefficient is saved in OTP memory.
+Small size & low consumption & long transmission distance(20m) 
+enable DHT11 to be suited in all kinds of harsh application occasions. 
+Single-row packaged with four pins, making the connection very convenient.
+
+Required properties:
+  - compatible: Should be "dht11"
+  - gpios: Should specify the GPIO connected to the sensor's data
+    line, see "gpios property" in
+    Documentation/devicetree/bindings/gpio/gpio.txt.
+
+Example:
+
+humidity_sensor {
+	compatible = "dht11";
+	gpios = <&gpio0 27 GPIO_ACTIVE_LOW>;
+}

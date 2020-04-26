@@ -1,0 +1,32 @@
+* Diode button driver.
+
+Required properties:
+  - compatible: Should be "matrix-keypad"
+  - button-gpios, led-gpios: Documentation/devicetree/bindings/gpio/gpio.txt.
+  - wakeup-source: if device is marked as a wakeup source, then all the primary
+interrupt(s) can be used as wakeup interrupt(s).
+  - pinctrl-names, pinctrl-0: Hardware modules that control pin multiplexing or configuration  	parameters such as pull-up/down, tri-state, drive-strength etc are designated as pin
+controllers. Each pin controller must be represented as a node in device tree,
+just like any other hardware module.
+
+&am33xx_pinmux {
+	diode_button_pins: diode_button_pins {
+		pinctrl-single,pins = <
+			AM33XX_IOPAD(0x82c, PIN_INPUT | MUX_MODE7) /* gpmc_ad11.gpio0_27 */
+			AM33XX_IOPAD(0x83c, PIN_OUTPUT | MUX_MODE7) /* gpmc_ad15.gpio1_15 */
+		>;
+	};
+};
+
+/ {
+	diode_button {
+		compatible = "diode_button";
+		button-gpios = <&gpio0 27 GPIO_ACTIVE_LOW>;
+		led-gpios = <&gpio1 15 GPIO_ACTIVE_HIGH>;
+		debounce-delay-ms = <5>;
+		wakeup-source;
+		pinctrl-names = "default";
+		pinctrl-0 = <&diode_button_pins>;
+	};
+};
+
