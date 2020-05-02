@@ -7,7 +7,7 @@ function set_en_and_build()
         cd $1/bbb/build
         source ../../poky-zeus/oe-init-build-env .
         source $2/bbb_config.sh $1
-        # clean status of kernel from tmp/cache        
+        # clean status of kernel from tmp/cache
         bitbake -c cleansstate console-image
         # build
         bitbake console-image
@@ -63,7 +63,7 @@ else
         install_packages $current_dir
         install_yocto $1
         set_en_and_build $1 $current_dir
-        
+
         sleep 1
 fi
 
