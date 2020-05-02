@@ -64,7 +64,7 @@ else
         install_yocto $1
         set_en_and_build $1 $current_dir
         
-        sleep 5
+        sleep 1
 fi
 
 
