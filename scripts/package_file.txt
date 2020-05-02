@@ -1,0 +1,9 @@
+build-essential
+chrpath
+diffstat
+gawk
+libncurses5-dev
+python3-distutils
+texinfo
+python2.7
+
