@@ -11,7 +11,7 @@ else
         cd $1/bbb/build
         source ../../poky-zeus/oe-init-build-env .
         # clean status of kernel from tmp/cache
-        bitbake -c cleansstate console-image
+        bitbake -c cleanall console-image
         # rebuild
         bitbake console-image
         sleep 1

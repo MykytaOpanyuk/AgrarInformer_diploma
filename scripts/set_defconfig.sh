@@ -15,8 +15,8 @@ function configure_layer()
         cd agroinformer
         mv example_0.1.bb agroinformer_0.1.bb
 
-        "FILESEXTRAPATHS_prepend := \"\${THISDIR}/\${PN}:" > agroinformer_0.1.bb
-        "SRC_URI += \"file://defconfig\"" >> agroinformer_0.1.bb
+        echo "FILESEXTRAPATHS_prepend := \"\${THISDIR}/\${PN}:\"" > agroinformer_0.1.bb
+        echo "SRC_URI += \"file://defconfig\"" >> agroinformer_0.1.bb
 }
 
 if [ -z "$1" ]
@@ -34,6 +34,7 @@ else
         configure_layer $1
 
         cp $current_dir/defconfig $1/bbb/meta-agroinformer/recipes-kernel/agroinformer/
+	echo "IMAGE_INSTALL_append = \"ppp\"" >> $1/bbb/build/conf/local.conf
         source $current_dir/rebuild_kernel.sh $1
         sleep 1
 fi
