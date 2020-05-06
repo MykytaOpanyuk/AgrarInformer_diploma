@@ -1,0 +1,8 @@
+Here is example of meta-layer with kernel module:
+http://git.yoctoproject.org/cgit/cgit.cgi/poky/tree/meta-skeleton/recipes-kernel/hello-mod
+
+If you want to use existing layers (meta-dht11, meta-diode_button_driver, meta-matrix_keypad),
+you need to add this to bitbake-layers of your yocto project by command:
+ $ bitbake-layers add-layer meta-agroinformer
+Build bitbake-layer:
+ $ bitbake agroinformer
