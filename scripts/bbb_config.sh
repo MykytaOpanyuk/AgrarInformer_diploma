@@ -10,7 +10,7 @@ function ponyfyer() {
 if [ -z "$1" ]
 then
         echo "Dir path for yocto project is not set."
-        echo "Using: ./bbb_config.sh <dir_path>"
+        echo "Using: source bbb_config.sh <dir_path>"
         sleep 5
         exit 1
 else

@@ -54,7 +54,7 @@ function install_yocto()
 if [ -z "$1" ]
 then
         echo "Dir path for yocto project is not set."
-        echo "Using: ./init_yocto_project.sh <dir_path>"
+        echo "Using: source init_yocto_project.sh <dir_path>"
         sleep 5
         exit 1
 else
