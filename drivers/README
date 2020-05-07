@@ -1,0 +1,22 @@
+For compiling drivers you should execute bash script set_env.sh:
+---------------------------------------------------------------
+$ source set_env.sh
+---------------------------------------------------------------
+The last command opens a new shell. This is the kernel development shell (devshell) which 
+is used for the next steps. The kernel development shell has a number of environment variables 
+set for cross-compilation. You can test this by invoking the gcc cross-compiler for the board:
+
+root:kernel-source$ arm-poky-linux-gnueabi-gcc --version
+arm-poky-linux-gnueabi-gcc (GCC) 4.9.2
+Copyright (C) 2014 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+The module is now built "out-of-tree" in its own folder, say /home/user/my_module as created 
+above. But, make is executed in the kernel source directory, so don't change the current 
+devshell directory!
+---------------------------------------------------------------
+root:kernel-source$ make M=/home/user/my_module modules
+---------------------------------------------------------------
+The make command generates several files in the module directory. 
+The resulting kernel module is my_module.ko (.ko = "kernel object").
