@@ -18,7 +18,10 @@ Required properties:
 
 Example:
 
-humidity_sensor {
-	compatible = "dht11";
-	gpios = <&gpio0 27 GPIO_ACTIVE_LOW>;
-}
+&am33xx_pinmux {
+        humidity_sensor {
+                compatible = "dht11";
+                gpios = <&gpio0 27 GPIO_ACTIVE_LOW>;
+        };
+};
+

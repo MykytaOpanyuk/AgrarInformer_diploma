@@ -78,7 +78,11 @@ SIM800L manual:
 http://codius.ru/articles/GSM_%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D1%8C_SIM800L_%D1%87%D0%B0%D1%81%D1%82%D1%8C_1
 You can find out info of SIM800L (Pinout + datasheet) in info directory.
 
-To connect the SIM800L to the Internet, we need to add PPP support to the Linux kernel, add the ppp package to our distribution kit and write a recipe extension file for it that will tell bitbake how and where to install the necessary files for pppd and chat in our distribution kit, being part of the ppp package.
+To connect the SIM800L to the Internet, we need to add PPP support to the
+Linux kernel, add the ppp package to our distribution kit and write
+a recipe extension file for it that will tell bitbake how and where to
+install the necessary files for pppd and chat in our distribution kit,
+being part of the ppp package.
 2 ways to have correct kernel defconfig:
 1)Use set_defconfig.sh script.
 2)(By yourself)To configure the kernel, execute the command:
@@ -103,8 +107,8 @@ After configuring you need to save new defconfig:
 --------------------------------------------------------------
 ~/yocto-project/bbb/build$ bitbake virtual/kernel -c savedefconfig
 --------------------------------------------------------------
-
-After that you should to modify bbb/build/conf/local.conf, add line to the end of file:
+After that you should to modify bbb/build/conf/local.conf,
+add line to the end of file:
 IMAGE_INSTALL_append = " ppp"
 And then rebuild bbb target:
 --------------------------------------------------------------
